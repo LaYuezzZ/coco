@@ -1,0 +1,48 @@
+mysql -u root -p
+ sudo mysql -u root -p
+ mysql> create table gwc(
+     -> id int auto_increment primary key,                                         
+     -> xh varchar(30),
+     -> zktx varchar(30),                                                         
+     -> syw varchar(50));                                                      
+ Query OK, 0 rows affected (0.39 sec)
+mysql> insert into gwc(id,xh,zktx,syw) values(1,"sjj","sjj123","haha");
+Query OK, 1 row affected (0.13 sec)
+ mysql> select * from gwc;
++----+------+--------+------+
+| id | xh   | zktx   | syw  |
++----+------+--------+------+
+|  1 | sjj  | sjj123 | haha |
++----+------+--------+------+
+1 row in set (0.04 sec)
+ mysql> insert into gwc(xh,zktx,syw)
+     -> values("zjj","zjj456","lala"),
+     -> ("zxy","zxy789","mama"),                                                   
+     -> ("ljj","ljj111","aaa");                                                 
+ Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+mysql>  select *from gwc;
++----+------+--------+------+
+| id | xh   | zktx   | syw  |
++----+------+--------+------+
+|  1 | sjj  | sjj123 | haha |
+|  2 | zjj  | zjj456 | lala |
+|  3 | zxy  | zxy789 | mama |
+|  4 | ljj  | ljj111 | aaa  |
++----+------+--------+------+
+4 rows in set (0.00 sec)
+mysql> update gwc set syw="uuu" where syw="mama";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+mysql> select * from gwc;
++----+------+--------+------+
+| id | xh   | zktx   | syw  |
++----+------+--------+------+
+|  1 | sjj  | sjj123 | haha |
+|  2 | zjj  | zjj456 | lala |
+|  3 | zxy  | zxy789 | uuu  |
+|  4 | ljj  | ljj111 | aaa  |
++----+------+--------+------+
+4 rows in set (0.00 sec)
+mysql> delete from gwc where xh="ljj";
+Query OK, 1 row affected (0.01 sec)
