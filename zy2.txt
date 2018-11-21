@@ -1,0 +1,180 @@
+sudo mysql -u root -p
+mysql> use hello_mysql;
+mysql> create table ags( id int auto_increment primary key, name varchar(20), gz int(20));
+mysql> desc ags;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| gz    | int(20)     | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+mysql> insert into ags(name,gz)
+    -> values("aa","1111"),
+    -> ("bb","2222"),
+    -> ("cc","3333"),
+    -> ("dd","4444"),
+    -> ("ee","5555"),
+    -> ("ff","6666"),
+    -> ("gg","7777"),
+    -> ("hh","8888"),
+    -> ("ii","9999"),
+    -> ("jj","10000"),
+    -> ("kk","11000");
+mysql> select * from ags;
++----+------+-------+
+| id | name | gz    |
++----+------+-------+
+|  1 | aa   |  1111 |
+|  2 | bb   |  2222 |
+|  3 | cc   |  3333 |
+|  4 | dd   |  4444 |
+|  5 | ee   |  5555 |
+|  6 | ff   |  6666 |
+|  7 | gg   |  7777 |
+|  8 | hh   |  8888 |
+|  9 | ii   |  9999 |
+| 10 | jj   | 10000 |
+| 11 | kk   | 11000 |
++----+------+-------+
+mysql> create table bds(
+    -> id int auto_increment primary key,
+    -> name varchar(20),
+    -> gz int(30));
+mysql> desc bds;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| gz    | int(30)     | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+mysql> insert into bds(name,gz)
+    -> values("li","1000"),
+    -> ("wang","2000"),
+    -> ("zhou","3000"),
+    -> ("zhao","4000"),
+    -> ("shi","5000"),
+    -> ("lu","6000"),
+    -> ("zhu","7000"),
+    -> ("sun","8000"),
+    -> ("jian","9000"),
+    -> ("yuan","10000");
+mysql> select * from bds;
++----+------+-------+
+| id | name | gz    |
++----+------+-------+
+|  1 | li   |  1000 |
+|  2 | wang |  2000 |
+|  3 | zhou |  3000 |
+|  4 | zhao |  4000 |
+|  5 | shi  |  5000 |
+|  6 | lu   |  6000 |
+|  7 | zhu  |  7000 |
+|  8 | sun  |  8000 |
+|  9 | jian |  9000 |
+| 10 | yuan | 10000 |
++----+------+-------+
+mysql> select sum(gz) from ags;
++---------+
+| sum(gz) |
++---------+
+|   70995 |
++---------+
+mysql> select sum(gz) from bds;
++---------+
+| sum(gz) |
++---------+
+|   55000 |
++---------+
+mysql> select max(gz) from ags;
++---------+
+| max(gz) |
++---------+
+|   11000 |
++---------+
+mysql> select max(gz) from bds;
++---------+
+| max(gz) |
++---------+
+|   10000 |
++---------+
+mysql> select min(gz) from ags;
++---------+
+| min(gz) |
++---------+
+|    1111 |
++---------+
+mysql> select min(gz) from bds;
++---------+
+| min(gz) |
++---------+
+|    1000 |
++---------+
+mysql> select 1111>1000;
++-----------+
+| 1111>1000 |
++-----------+
+|         1 |
++-----------+
+mysql> select 11000>10000;
++-------------+
+| 11000>10000 |
++-------------+
+|           1 |
++-------------+
+mysql> select * from ags order by id desc;
++----+------+-------+
+| id | name | gz    |
++----+------+-------+
+| 11 | kk   | 11000 |
+| 10 | jj   | 10000 |
+|  9 | ii   |  9999 |
+|  8 | hh   |  8888 |
+|  7 | gg   |  7777 |
+|  6 | ff   |  6666 |
+|  5 | ee   |  5555 |
+|  4 | dd   |  4444 |
+|  3 | cc   |  3333 |
+|  2 | bb   |  2222 |
+|  1 | aa   |  1111 |
++----+------+-------+
+mysql> select * from bds order by id desc;
++----+------+-------+
+| id | name | gz    |
++----+------+-------+
+| 10 | yuan | 10000 |
+|  9 | jian |  9000 |
+|  8 | sun  |  8000 |
+|  7 | zhu  |  7000 |
+|  6 | lu   |  6000 |
+|  5 | shi  |  5000 |
+|  4 | zhao |  4000 |
+|  3 | zhou |  3000 |
+|  2 | wang |  2000 |
+|  1 | li   |  1000 |
++----+------+-------+
+mysql> select * from ags order by id desc limit 5;
++----+------+-------+
+| id | name | gz    |
++----+------+-------+
+| 11 | kk   | 11000 |
+| 10 | jj   | 10000 |
+|  9 | ii   |  9999 |
+|  8 | hh   |  8888 |
+|  7 | gg   |  7777 |
++----+------+-------+
+mysql> select * from bds order by id desc limit 5;
++----+------+-------+
+| id | name | gz    |
++----+------+-------+
+| 10 | yuan | 10000 |
+|  9 | jian |  9000 |
+|  8 | sun  |  8000 |
+|  7 | zhu  |  7000 |
+|  6 | lu   |  6000 |
++----+------+------
+
+
+
+
